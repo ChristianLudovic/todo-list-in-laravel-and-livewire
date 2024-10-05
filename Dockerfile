@@ -31,6 +31,9 @@ RUN composer install --optimize-autoloader --no-dev
 # Changer les permissions des fichiers
 RUN chown -R www-data:www-data /var/www
 
+RUN apk add --no-cache <votre-liste-de-paquets> && \
+    apk del perl-error
+
 # Étape 2 : Configuration Nginx et Supervisor
 # Copier les fichiers de configuration pour Nginx et Supervisor
 COPY docker/nginx.conf /etc/nginx/nginx.conf
