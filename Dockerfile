@@ -10,7 +10,6 @@ RUN docker-php-ext-install pdo pdo_mysql
 RUN apk add --no-cache nodejs npm
 
 # Install PHP and JS dependencies
-RUN composer install --optimize-autoloader --no-dev
 RUN npm install
 RUN npm run build
 
@@ -23,8 +22,15 @@ WORKDIR /var/www
 # Copy existing application directory contents
 COPY . /var/www
 
-# Install dependencies
-RUN composer install --optimize-autoloader --no-dev
+# Installer les dépendances
+RUN apt-get update && apt-get install -y \
+    git \
+    unzip \
+    curl
+
+# Installer Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
 
 # Copy configuration files
 COPY docker/nginx.conf /etc/nginx/nginx.conf
