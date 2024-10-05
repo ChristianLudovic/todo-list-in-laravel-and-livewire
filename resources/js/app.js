@@ -1,3 +1,3 @@
 import './bootstrap';
-import 'livewire/livewire';
+import { Livewire } from '../../vendor/livewire/livewire/dist/livewire.esm';
 Livewire.start();

@@ -1,5 +1,5 @@
 # Étape 1 : Utiliser PHP 8.1 FPM basé sur Alpine
-FROM php:8.1-fpm-alpine AS base
+FROM php:8.2.12-fpm-alpine AS base
 
 # Installer les dépendances système
 RUN apk add --no-cache nginx supervisor git curl unzip nodejs npm
