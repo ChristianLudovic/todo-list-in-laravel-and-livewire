@@ -17,5 +17,5 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth.custom'])->name('dashboard');
 
-Route::post('/logout', [SocialiteController::class, 'logout'])->name('logout');
+
 Auth::routes();
